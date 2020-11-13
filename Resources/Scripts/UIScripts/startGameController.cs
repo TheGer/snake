@@ -18,6 +18,7 @@ public class startGameController : MonoBehaviour
                 () =>
                 {
                     Camera.main.GetComponent<snakeGenerator>().enabled = true;
+                    Camera.main.GetComponent<foodGenerator>().enabled = true;
                     startButton.SetActive(false);
                 });
 
