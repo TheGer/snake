@@ -34,22 +34,28 @@ public class foodGenerator : MonoBehaviour
 
                 foodPosition = new positionRecord();
 
-                float randomX = Mathf.Floor(Random.Range(-9f, -9f));
+                float randomX = Mathf.Floor(Random.Range(-9f, 9f));
 
-                float randomY = Mathf.Floor(Random.Range(-9f, -9f));
+                float randomY = Mathf.Floor(Random.Range(-9f, 9f));
 
                 Vector3 randomLocation = new Vector3(randomX, randomY);
 
                 //don't allow the food to be spawned on other food
 
-
                 foodPosition.Position = randomLocation;
 
-                foodPosition.BreadcrumbBox = Instantiate(foodObject, randomLocation, Quaternion.Euler(0f, 0f, 45f));
+                if (!allTheFood.Contains(foodPosition))
 
-                foodPosition.BreadcrumbBox.name = "Food Object";
+                {
 
-                allTheFood.Add(foodPosition);
+                    foodPosition.BreadcrumbBox = Instantiate(foodObject, randomLocation, Quaternion.Euler(0f, 0f, 45f));
+
+                    foodPosition.BreadcrumbBox.GetComponent<SpriteRenderer>().color = Random.ColorHSV();
+
+                    foodPosition.BreadcrumbBox.name = "Food Object";
+
+                    allTheFood.Add(foodPosition);
+                }
 
                 yield return null;
             }

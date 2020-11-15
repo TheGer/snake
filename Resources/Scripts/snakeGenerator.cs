@@ -13,12 +13,36 @@ class positionRecord
 
     
 
+    
+
     GameObject breadcrumbBox;
 
     public void changeColor()
     {
         this.BreadcrumbBox.GetComponent<SpriteRenderer>().color = Color.black;
     }
+
+    public override bool Equals(System.Object obj)
+    {
+        if (obj == null)
+            return false;
+        positionRecord p = obj as positionRecord;
+        if ((System.Object)p == null)
+            return false;
+        return position == p.position;
+    }
+
+
+    public bool Equals(positionRecord o)
+    {
+        if (o == null)
+            return false;
+        Vector3 toCompare = (Vector3)o.position;
+            return Vector3.Distance(position,o.position) < 1.5f;
+       
+       
+    }
+
 
 
 
@@ -32,6 +56,8 @@ public class snakeGenerator : MonoBehaviour
 
     public int snakelength;
 
+
+    int pastpositionslimit = 100;
 
     GameObject playerBox,breadcrumbBox,pathParent,timerUI;
 
@@ -199,6 +225,14 @@ public class snakeGenerator : MonoBehaviour
     }
 
 
+    void cleanList()
+    {
+        for(int counter = pastPositions.Count - 1 ; counter > pastPositions.Count;counter--)
+        {
+            pastPositions[counter] = null;
+        }
+    }
+
     void drawTail(int length)
     {
         clearTail();
@@ -276,6 +310,7 @@ public class snakeGenerator : MonoBehaviour
 
     void clearTail()
     {
+        cleanList();
         foreach (positionRecord p in pastPositions)
         {
            // Debug.Log("Destroy tail" + pastPositions.Count);

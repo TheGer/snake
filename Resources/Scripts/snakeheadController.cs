@@ -31,6 +31,6 @@ public class snakeheadController : MonoBehaviour
             transform.position -= new Vector3(0, 1f);
         }
 
-        Debug.Log(mysnakegenerator.hitTail(this.transform.position, mysnakegenerator.snakelength)); 
+        //Debug.Log(mysnakegenerator.hitTail(this.transform.position, mysnakegenerator.snakelength)); 
     }
 }
