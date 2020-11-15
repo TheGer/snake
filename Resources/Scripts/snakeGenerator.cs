@@ -37,8 +37,8 @@ class positionRecord
     {
         if (o == null)
             return false;
-        Vector3 toCompare = (Vector3)o.position;
-            return Vector3.Distance(position,o.position) < 1.5f;
+        Vector3 toCompare = o.position;
+            return Vector3.Distance(position,toCompare) < 2f;
        
        
     }
@@ -298,7 +298,7 @@ public class snakeGenerator : MonoBehaviour
         {
             if ((headPosition == pastPositions[snakeblocks].Position) && (pastPositions[snakeblocks].BreadcrumbBox != null))
             {
-                Debug.Log("Hit Tail");
+              //  Debug.Log("Hit Tail");
                 return true;
             }
         }
@@ -307,6 +307,8 @@ public class snakeGenerator : MonoBehaviour
        return false;
 
     }
+
+
 
     void clearTail()
     {

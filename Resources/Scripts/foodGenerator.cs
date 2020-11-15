@@ -11,6 +11,9 @@ public class foodGenerator : MonoBehaviour
     List<positionRecord> allTheFood;
 
 
+    snakeGenerator sn;
+
+
     int getVisibleFood()
     {
         int counter = 0;
@@ -23,6 +26,27 @@ public class foodGenerator : MonoBehaviour
         }
 
         return counter;
+    }
+
+    public void eatFood(Vector3 snakeHeadPosition)
+    {
+        positionRecord snakeHeadPos = new positionRecord();
+
+        snakeHeadPos.Position = snakeHeadPosition;
+
+        int foodIndex = allTheFood.IndexOf(snakeHeadPos);
+
+        if (foodIndex != -1)
+        { 
+            Destroy(allTheFood[foodIndex].BreadcrumbBox);
+
+          //  allTheFood.RemoveAt(foodIndex);
+
+            sn.snakelength++;
+        }
+
+
+
     }
 
     IEnumerator generateFood()
@@ -44,7 +68,7 @@ public class foodGenerator : MonoBehaviour
 
                 foodPosition.Position = randomLocation;
 
-                if (!allTheFood.Contains(foodPosition))
+                if (!allTheFood.Contains(foodPosition) && !sn.hitTail(foodPosition.Position,sn.snakelength))
 
                 {
 
@@ -74,6 +98,8 @@ public class foodGenerator : MonoBehaviour
         allTheFood = new List<positionRecord>();
 
         foodObject = Resources.Load<GameObject>("Prefabs/Square");
+
+        sn = Camera.main.GetComponent<snakeGenerator>();
 
         StartCoroutine(generateFood());
 
