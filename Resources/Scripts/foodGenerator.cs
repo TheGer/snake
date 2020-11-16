@@ -35,6 +35,7 @@ public class foodGenerator : MonoBehaviour
         snakeHeadPos.Position = snakeHeadPosition;
 
         int foodIndex = allTheFood.IndexOf(snakeHeadPos);
+        //
 
         if (foodIndex != -1)
         { 
