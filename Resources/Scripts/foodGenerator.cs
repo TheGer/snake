@@ -41,7 +41,7 @@ public class foodGenerator : MonoBehaviour
         { 
             Destroy(allTheFood[foodIndex].BreadcrumbBox);
 
-          //  allTheFood.RemoveAt(foodIndex);
+            allTheFood.RemoveAt(foodIndex);
 
             sn.snakelength++;
         }
@@ -50,7 +50,7 @@ public class foodGenerator : MonoBehaviour
 
     }
 
-    IEnumerator generateFood()
+    public IEnumerator generateFood()
     {
         while(true)
         {
@@ -77,6 +77,8 @@ public class foodGenerator : MonoBehaviour
 
                     foodPosition.BreadcrumbBox.GetComponent<SpriteRenderer>().color = Random.ColorHSV();
 
+                    foodPosition.BreadcrumbBox.transform.localScale = new Vector3(0.5f, 0.5f);
+
                     foodPosition.BreadcrumbBox.name = "Food Object";
 
                     allTheFood.Add(foodPosition);
@@ -102,10 +104,12 @@ public class foodGenerator : MonoBehaviour
 
         sn = Camera.main.GetComponent<snakeGenerator>();
 
-        StartCoroutine(generateFood());
+       // StartCoroutine(generateFood());
 
 
     }
+
+
 
     
     

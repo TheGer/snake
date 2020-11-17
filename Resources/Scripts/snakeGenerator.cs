@@ -56,6 +56,8 @@ public class snakeGenerator : MonoBehaviour
 
     public int snakelength;
 
+    foodGenerator fgen;
+
 
     int pastpositionslimit = 100;
 
@@ -67,6 +69,24 @@ public class snakeGenerator : MonoBehaviour
 
     bool firstrun = true;
 
+
+
+    IEnumerator waitToGenerateFood()
+    {
+        while (true)
+        {
+            if (!firstrun)
+            {
+                StartCoroutine(fgen.generateFood());
+                break;
+            }
+
+            yield return null;
+
+        }
+        yield return null;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -76,6 +96,8 @@ public class snakeGenerator : MonoBehaviour
 
         //the default value for the timer is started
         timerUI.GetComponentInChildren<timerManager>().timerStarted = true;
+
+       
 
 
         pathParent = new GameObject();
@@ -96,7 +118,12 @@ public class snakeGenerator : MonoBehaviour
 
         pastPositions = new List<positionRecord>();
 
+        fgen = Camera.main.GetComponent<foodGenerator>();
+
+        StartCoroutine(waitToGenerateFood());
+
         drawTail(snakelength);
+       
     }
 
     //TASK 1: create a coroutine based on this code that when the X key is pressed, the box is going to go through
