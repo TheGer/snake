@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEngine;
 
 
-class positionRecord
+public class positionRecord
 {
     //the place where I've been
     Vector3 position;
@@ -57,6 +57,7 @@ public class snakeGenerator : MonoBehaviour
     public int snakelength;
 
     foodGenerator fgen;
+    snakeheadController snakeController;
 
 
     int pastpositionslimit = 100;
@@ -348,6 +349,8 @@ public class snakeGenerator : MonoBehaviour
     }
 
 
+  
+
 
     void Update()
     {
@@ -378,7 +381,8 @@ public class snakeGenerator : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            StartCoroutine(Task5());
+            StartCoroutine(snakeController.automoveCoroutine());
+          //  StartCoroutine(Task5());
         }
 
 

@@ -1,11 +1,38 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class snakeheadController : MonoBehaviour
 {
     snakeGenerator mysnakegenerator;
     foodGenerator myfoodgenerator;
+
+   
+    public Vector3 findClosestFood()
+    {
+        if (myfoodgenerator.allTheFood.Count > 0)
+        {
+            List<positionRecord> sortedFoods = myfoodgenerator.allTheFood.OrderBy(
+        x => Vector3.Distance(this.transform.position, x.Position)
+       ).ToList();
+            return sortedFoods[0].Position;
+        }
+        return new Vector3(0f, 0f);
+    }
+
+    public IEnumerator automoveCoroutine()
+    {
+        while(true)
+        {
+
+
+            yield return null;
+        }
+        
+    }
+
+
 
     private void Start()
     {
@@ -31,8 +58,12 @@ public class snakeheadController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
+
+            Debug.Log("Closest food" + findClosestFood());
             transform.position -= new Vector3(1f,0);
             checkBounds();
             myfoodgenerator.eatFood(this.transform.position);
@@ -41,6 +72,7 @@ public class snakeheadController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
+            Debug.Log("Closest food" + findClosestFood());
             transform.position += new Vector3(1f, 0);
             checkBounds();
             myfoodgenerator.eatFood(this.transform.position);
@@ -48,6 +80,7 @@ public class snakeheadController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
+            Debug.Log("Closest food" + findClosestFood());
             transform.position += new Vector3(0, 1f);
             checkBounds();
             myfoodgenerator.eatFood(this.transform.position);
@@ -55,11 +88,14 @@ public class snakeheadController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
+            Debug.Log("Closest food" + findClosestFood());
             transform.position -= new Vector3(0, 1f);
             checkBounds();
             myfoodgenerator.eatFood(this.transform.position);
             Debug.Log(mysnakegenerator.hitTail(this.transform.position, mysnakegenerator.snakelength));
         }
+
+        
 
         //Debug.Log(mysnakegenerator.hitTail(this.transform.position, mysnakegenerator.snakelength)); 
     }

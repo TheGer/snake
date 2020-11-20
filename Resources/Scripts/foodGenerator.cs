@@ -8,10 +8,11 @@ public class foodGenerator : MonoBehaviour
 
     GameObject foodObject;
 
-    List<positionRecord> allTheFood;
+    public List<positionRecord> allTheFood;
 
 
     snakeGenerator sn;
+
 
 
     int getVisibleFood()
