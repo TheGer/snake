@@ -8,10 +8,11 @@ public class foodGenerator : MonoBehaviour
 
     GameObject foodObject;
 
-    List<positionRecord> allTheFood;
+    public List<positionRecord> allTheFood;
 
 
     snakeGenerator sn;
+
 
 
     int getVisibleFood()
@@ -62,7 +63,7 @@ public class foodGenerator : MonoBehaviour
 
             Destroy(allTheFood[foodIndex].BreadcrumbBox);
 
-          //  allTheFood.RemoveAt(foodIndex);
+            allTheFood.RemoveAt(foodIndex);
 
             sn.snakelength++;
 
@@ -73,7 +74,7 @@ public class foodGenerator : MonoBehaviour
 
     }
 
-    IEnumerator generateFood()
+    public IEnumerator generateFood()
     {
         while(true)
         {
@@ -105,6 +106,8 @@ public class foodGenerator : MonoBehaviour
 
                     foodPosition.BreadcrumbBox.GetComponent<SpriteRenderer>().color = Random.ColorHSV();
 
+                    foodPosition.BreadcrumbBox.transform.localScale = new Vector3(0.5f, 0.5f);
+
                     foodPosition.BreadcrumbBox.name = "Food Object";
 
                     allTheFood.Add(foodPosition);
@@ -132,18 +135,27 @@ public class foodGenerator : MonoBehaviour
 
         sn = Camera.main.GetComponent<snakeGenerator>();
 
+<<<<<<< HEAD
 
         StartCoroutine(generateFood());
+=======
+       // StartCoroutine(generateFood());
+>>>>>>> 4a636dbecbf0baa2699120da37ecbce5d76d0f0a
 
 
     }
 
 
+<<<<<<< HEAD
     //TASK
     //1. To solve the bugs I've left for you to solve. 
     //2. To decide on 3 changes on the snake game that has been implemented and implement them in your own way
     //3. Implement your snake game as a web player and share the file as a zip.
     //---------------------------------------------------------------------------------------------------------//
 
+=======
+
+    
+>>>>>>> 4a636dbecbf0baa2699120da37ecbce5d76d0f0a
     
 }

@@ -4,9 +4,13 @@ using UnityEditor;
 using UnityEngine;
 
 
+<<<<<<< HEAD
 
 
 class positionRecord
+=======
+public class positionRecord
+>>>>>>> 4a636dbecbf0baa2699120da37ecbce5d76d0f0a
 {
 
 
@@ -68,6 +72,11 @@ class positionRecord
        
     }
 
+    public override int GetHashCode()
+    {
+        return base.GetHashCode();
+    }
+
 
 
 
@@ -81,6 +90,9 @@ public class snakeGenerator : MonoBehaviour
 
     public int snakelength;
 
+    foodGenerator fgen;
+    snakeheadController snakeController;
+
 
     int pastpositionslimit = 100;
 
@@ -92,7 +104,27 @@ public class snakeGenerator : MonoBehaviour
 
     bool firstrun = true;
 
+<<<<<<< HEAD
     Color snakeColor;
+=======
+
+
+    IEnumerator waitToGenerateFood()
+    {
+        while (true)
+        {
+            if (!firstrun)
+            {
+                StartCoroutine(fgen.generateFood());
+                break;
+            }
+
+            yield return null;
+
+        }
+        yield return null;
+    }
+>>>>>>> 4a636dbecbf0baa2699120da37ecbce5d76d0f0a
 
     // Start is called before the first frame update
     void Start()
@@ -106,6 +138,8 @@ public class snakeGenerator : MonoBehaviour
 
         //the default value for the timer is started
         timerUI.GetComponentInChildren<timerManager>().timerStarted = true;
+
+       
 
 
         pathParent = new GameObject();
@@ -126,7 +160,12 @@ public class snakeGenerator : MonoBehaviour
 
         pastPositions = new List<positionRecord>();
 
+        fgen = Camera.main.GetComponent<foodGenerator>();
+
+        StartCoroutine(waitToGenerateFood());
+
         drawTail(snakelength);
+       
     }
 
     //TASK 1: create a coroutine based on this code that when the X key is pressed, the box is going to go through
@@ -366,6 +405,8 @@ public class snakeGenerator : MonoBehaviour
     }
 
 
+  
+
 
     void Update()
     {
@@ -396,7 +437,8 @@ public class snakeGenerator : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            StartCoroutine(Task5());
+            StartCoroutine(snakeController.automoveCoroutine());
+          //  StartCoroutine(Task5());
         }
 
 
