@@ -4,13 +4,8 @@ using UnityEditor;
 using UnityEngine;
 
 
-<<<<<<< HEAD
-
-
-class positionRecord
-=======
 public class positionRecord
->>>>>>> 4a636dbecbf0baa2699120da37ecbce5d76d0f0a
+
 {
 
 
