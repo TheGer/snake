@@ -63,7 +63,7 @@ public class snakeheadController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
 
-            Debug.Log("Closest food" + findClosestFood());
+            Debug.LogWarning("Closest food" + findClosestFood());
             transform.position -= new Vector3(1f,0);
             checkBounds();
             myfoodgenerator.eatFood(this.transform.position);
@@ -72,7 +72,7 @@ public class snakeheadController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            Debug.Log("Closest food" + findClosestFood());
+            Debug.LogWarning("Closest food" + findClosestFood());
             transform.position += new Vector3(1f, 0);
             checkBounds();
             myfoodgenerator.eatFood(this.transform.position);
@@ -80,7 +80,7 @@ public class snakeheadController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            Debug.Log("Closest food" + findClosestFood());
+            Debug.LogWarning("Closest food" + findClosestFood());
             transform.position += new Vector3(0, 1f);
             checkBounds();
             myfoodgenerator.eatFood(this.transform.position);
@@ -88,7 +88,7 @@ public class snakeheadController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            Debug.Log("Closest food" + findClosestFood());
+            Debug.LogWarning("Closest food" + findClosestFood());
             transform.position -= new Vector3(0, 1f);
             checkBounds();
             myfoodgenerator.eatFood(this.transform.position);
