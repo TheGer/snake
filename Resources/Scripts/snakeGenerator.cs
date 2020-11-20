@@ -104,9 +104,9 @@ public class snakeGenerator : MonoBehaviour
 
     bool firstrun = true;
 
-<<<<<<< HEAD
+
     Color snakeColor;
-=======
+
 
 
     IEnumerator waitToGenerateFood()
@@ -124,7 +124,7 @@ public class snakeGenerator : MonoBehaviour
         }
         yield return null;
     }
->>>>>>> 4a636dbecbf0baa2699120da37ecbce5d76d0f0a
+
 
     // Start is called before the first frame update
     void Start()

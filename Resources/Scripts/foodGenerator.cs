@@ -135,27 +135,11 @@ public class foodGenerator : MonoBehaviour
 
         sn = Camera.main.GetComponent<snakeGenerator>();
 
-<<<<<<< HEAD
-
-        StartCoroutine(generateFood());
-=======
        // StartCoroutine(generateFood());
->>>>>>> 4a636dbecbf0baa2699120da37ecbce5d76d0f0a
 
 
     }
 
 
-<<<<<<< HEAD
-    //TASK
-    //1. To solve the bugs I've left for you to solve. 
-    //2. To decide on 3 changes on the snake game that has been implemented and implement them in your own way
-    //3. Implement your snake game as a web player and share the file as a zip.
-    //---------------------------------------------------------------------------------------------------------//
-
-=======
-
-    
->>>>>>> 4a636dbecbf0baa2699120da37ecbce5d76d0f0a
     
 }
