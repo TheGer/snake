@@ -35,15 +35,38 @@ public class foodGenerator : MonoBehaviour
         snakeHeadPos.Position = snakeHeadPosition;
 
         int foodIndex = allTheFood.IndexOf(snakeHeadPos);
-        //
+        
+       
+        
+
+
+        //if I have a list as follows
+
+        //1. = 0 positionRecord1 in Vector3(0f,0f);
+        //2. Vector3(1,0)
+        //3. VEctor3(2,0)
+
+        //indexof(0,0) = 0
+
+        //indexof(-5,2) = -1
+
 
         if (foodIndex != -1)
         { 
+
+            Color foodColor;
+
+            foodColor = allTheFood[foodIndex].BreadcrumbBox.GetComponent<SpriteRenderer>().color;
+
+            sn.changeSnakeColor(sn.snakelength,foodColor);
+
             Destroy(allTheFood[foodIndex].BreadcrumbBox);
 
           //  allTheFood.RemoveAt(foodIndex);
 
             sn.snakelength++;
+
+            
         }
 
 
@@ -75,6 +98,11 @@ public class foodGenerator : MonoBehaviour
 
                     foodPosition.BreadcrumbBox = Instantiate(foodObject, randomLocation, Quaternion.Euler(0f, 0f, 45f));
 
+
+                    //make the food half the size
+                    foodPosition.BreadcrumbBox.transform.localScale = new Vector3(0.5f,0.5f);
+
+
                     foodPosition.BreadcrumbBox.GetComponent<SpriteRenderer>().color = Random.ColorHSV();
 
                     foodPosition.BreadcrumbBox.name = "Food Object";
@@ -91,6 +119,8 @@ public class foodGenerator : MonoBehaviour
         }
     }
 
+    squareGenerator mysquareGenerator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -102,11 +132,18 @@ public class foodGenerator : MonoBehaviour
 
         sn = Camera.main.GetComponent<snakeGenerator>();
 
+
         StartCoroutine(generateFood());
 
 
     }
 
-    
+
+    //TASK
+    //1. To solve the bugs I've left for you to solve. 
+    //2. To decide on 3 changes on the snake game that has been implemented and implement them in your own way
+    //3. Implement your snake game as a web player and share the file as a zip.
+    //---------------------------------------------------------------------------------------------------------//
+
     
 }

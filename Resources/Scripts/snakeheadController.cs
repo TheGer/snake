@@ -5,12 +5,14 @@ using UnityEngine;
 public class snakeheadController : MonoBehaviour
 {
     snakeGenerator mysnakegenerator;
-    foodGenerator myfoodgenerator;
+    foodGenerator myfoodgenerator,myfoodgenerator2;
 
     private void Start()
     {
         mysnakegenerator = Camera.main.GetComponent<snakeGenerator>();
         myfoodgenerator = Camera.main.GetComponent<foodGenerator>();
+        
+
     }
 
     // Update is called once per frame
